@@ -1,7 +1,11 @@
-from Backend.Factories      import (FormPrototypeFactory, StorageFactory, 
-                                    ActiveUsersFactory, APIFactory)
-from Backend.StateMachine   import StateMachine 
-from Backend.StateHistory   import StateHistory 
+from .Factories      import (
+    FormPrototypeFactory, 
+    StorageFactory, 
+    ActiveUsersFactory, 
+    APIFactory
+)
+from .StateMachine   import StateMachine 
+from .StateHistory   import StateHistory 
 
 
 class Assembly():
