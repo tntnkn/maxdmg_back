@@ -41,7 +41,12 @@ class MonoAPI(API):
 
     def AcceptInput(self, message: Message) -> Message:
         user_id = message['user_id']
+
+        if message['contents'] is None:
+            self.active_users.ResetUser(user_id)
+
         context = self.active_users.GetUserContext(user_id)
+
         try:
             form = self.state_machine.Go(context, 
                                          message['contents'])

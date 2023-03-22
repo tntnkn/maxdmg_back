@@ -19,10 +19,14 @@ class ActiveUsers(StorageInterface):
         return self.storage.AddUser(user_id)
     
     def DeleteUser(self, user_id: M.ID) -> None:
-        if user_id not in self.user_context_cache:
-            return
+        if user_id in self.user_context_cache:
+            self.user_context_cache.pop(user_id)
         self.storage.DeleteUser(user_id)
-        self.user_context_cache.pop(user_id)
+
+    def ResetUser(self, user_id: M.ID) -> None:
+        if user_id in self.user_context_cache:
+            self.user_context_cache.pop(user_id)
+        self.storage.ResetUser(user_id)
 
     def GetUserContext(self, user_id: M.ID) -> Context: 
         if user_id not in self.user_context_cache:

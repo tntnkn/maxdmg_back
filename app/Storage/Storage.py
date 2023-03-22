@@ -40,6 +40,12 @@ class Storage(StorageInterface):
         }
         self.__NewUser(user_id, new_user_info)
 
+    def ResetUser(self, user_id: M.ID) -> None:
+        if not self.HasUser(user_id):
+            return
+        self.DeleteUser(user_id)
+        self.AddUser(user_id)
+
     def CopyNarrowingFormInfo(self, 
                               old_form_id, 
                               new_form_id,
