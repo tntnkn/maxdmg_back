@@ -64,7 +64,9 @@ class MonoAPI(API):
                 if not tgs:
                     continue
                 for t in tgs.split(','):
-                    tags_inps[t.strip()] = inps[f_id]
+                    tag = t.strip()
+                    if not tags_inps.get(tag) or not tags_inps[tag]:
+                        tags_inps[tag] = inps[f_id]
 
             contents = {
                 'tags'      : tags_inps,
