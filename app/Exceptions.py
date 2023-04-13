@@ -107,3 +107,17 @@ class FormElemSwitchedHistory(Exception):
 class UserDone(Exception):
     pass
 
+
+# ==== maxdmg-resource Exceptions
+
+class MaxDmgResourceErrors(Exception):
+    def __init__(self, errors):
+        self.message = 'Errors occured in maxdmg-resource: '
+        self.errors  = errors
+
+        super(MaxDmgResourceErrors, self).__init__( 
+            (self.message, self.errors) )
+
+    def __reduce__(self):
+        return (MaxDmgResourceErrors, (self.message, self.errors))
+
